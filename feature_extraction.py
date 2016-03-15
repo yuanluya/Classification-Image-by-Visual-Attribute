@@ -24,8 +24,8 @@ def getVector(fileName):
 				temp = temp.replace(' ', ' ')
 				temp = temp.split()
 				for attribute in temp:
-					vectorColor.add(attribute)
-	return list(vector), list(vectorColor)
+					vector.add(attribute)
+	return list(vector)#, list(vectorColor)
 
 def getMatrix(totalFeatures, fileName):
 	matrix = []
@@ -48,12 +48,19 @@ def getMatrix(totalFeatures, fileName):
 						featureVector[totalFeatures.index(attribute)] = 0
 					else:
 						featureVector[totalFeatures.index(attribute)] = 1
+			color = concept.find('colour_patterns')
+			if color != None:
+				temp = color.text.replace('\n', ' ')
+				temp = temp.replace(' ', ' ')
+				temp = temp.split()
+				for attribute in temp:
+					featureVector[totalFeatures.index(attribute)] = 1
 			matrix.append(featureVector)
 	return np.array(matrix), names
 
 def main():
-	(vector, vectorColor) = getVector('visa_dataset/ANIMALS_structured_final.xml')
-	print vectorColor
+	vector = getVector('visa_dataset/ANIMALS_structured_final.xml')
+	print vector
 	Matrix78, names = getMatrix(vector, 'visa_dataset/ANIMALS_structured_final.xml')
 	print np.shape(Matrix78), np.std(Matrix78, axis = 0)
 	dist = 0
@@ -73,9 +80,9 @@ def main():
 			dist += temp
 	
 	dist /= np.shape(Matrix78)[0] * (np.shape(Matrix78)[0] - 1) / 2
-	#print dist, mini, maxi, num
+	print dist, mini, maxi, num
 
-	
+
 
 if __name__ == '__main__':
 	main()
