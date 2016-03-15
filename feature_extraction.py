@@ -62,7 +62,11 @@ def main():
 	vector = getVector('visa_dataset/ANIMALS_structured_final.xml')
 	print vector
 	Matrix78, names = getMatrix(vector, 'visa_dataset/ANIMALS_structured_final.xml')
-	print np.shape(Matrix78), np.std(Matrix78, axis = 0)
+	std = np.std(Matrix78, axis = 0)
+	print np.shape(Matrix78), std
+	for i in range(std.shape[0]):
+		if std[i]  == 0.5:
+			print vector[i]
 	dist = 0
 	mini = 80;
 	maxi = 0;

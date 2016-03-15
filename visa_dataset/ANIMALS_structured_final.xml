@@ -4511,7 +4511,6 @@
 	has_eyes$$$
 	has_prolegs
 	has_setae
-	has_mandibles$$$
 	has_spiracles
 </anatomy>
 <parts>
@@ -4917,7 +4916,6 @@
 	has_4_legs
 	has_feet
 	has_eyes
-	has_retractable_head$$$
 	has_mouth
 	has_head
 	has_nose
