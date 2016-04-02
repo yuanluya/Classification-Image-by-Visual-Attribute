@@ -1,0 +1,37 @@
+<annotation>
+	<folder>n02062744</folder>
+	<filename>n02062744_6711</filename>
+	<source>
+		<database>ImageNet database</database>
+	</source>
+	<size>
+		<width>384</width>
+		<height>480</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>n02062744</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>80</xmin>
+			<ymin>124</ymin>
+			<xmax>331</xmax>
+			<ymax>268</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>n02062744</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>20</xmin>
+			<ymin>265</ymin>
+			<xmax>62</xmax>
+			<ymax>315</ymax>
+		</bndbox>
+	</object>
+</annotation>

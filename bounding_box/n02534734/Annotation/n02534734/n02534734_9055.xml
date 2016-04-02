@@ -1,0 +1,37 @@
+<annotation>
+	<folder>n02534734</folder>
+	<filename>n02534734_9055</filename>
+	<source>
+		<database>ImageNet database</database>
+	</source>
+	<size>
+		<width>469</width>
+		<height>500</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>n02534734</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>311</xmin>
+			<ymin>138</ymin>
+			<xmax>431</xmax>
+			<ymax>498</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>n02534734</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>96</xmin>
+			<ymin>153</ymin>
+			<xmax>185</xmax>
+			<ymax>498</ymax>
+		</bndbox>
+	</object>
+</annotation>
