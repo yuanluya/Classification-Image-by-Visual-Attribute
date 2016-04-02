@@ -4262,8 +4262,8 @@
 <shape_size>
 	is_small
 </shape_size>
-</concept>
- <concept name="lobster">
+</concept> 
+ <concept name="lobster" synsetID="n01984695">
 <behaviour>
 	beh_-_swims
 	beh_-_eats$$$

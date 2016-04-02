@@ -30,13 +30,23 @@ def getVector(fileName):
 def getMatrix(totalFeatures, fileName):
 	matrix = []
 	names = []
+	ID = []
 	length = len(totalFeatures)
 	tree = et.parse(fileName)
 	root = tree.getroot()
+	cc = 0
 	for subcategory in root:
 		for concept in subcategory:
+			text_file = open("ids.txt", "a")
+			#print concept.attrib['synsetID']
 			names.append(concept.attrib['name'])
+			ID.append(concept.attrib['synsetID'])
+			text_file.writelines(concept.attrib['synsetID']+'\n')
+
+
+
 			anatomy = concept.find('anatomy')
+			#print anatomy
 			featureVector = np.zeros(length)
 			if anatomy != None:
 				temp = anatomy.text.replace('\n', ' ')
@@ -56,17 +66,19 @@ def getMatrix(totalFeatures, fileName):
 				for attribute in temp:
 					featureVector[totalFeatures.index(attribute)] = 1
 			matrix.append(featureVector)
-	return np.array(matrix), names
+	text_file.close()
+	return np.array(matrix), names,ID
 
 def main():
 	vector = getVector('visa_dataset/ANIMALS_structured_final.xml')
-	print vector
-	Matrix78, names = getMatrix(vector, 'visa_dataset/ANIMALS_structured_final.xml')
+	#print vector
+	Matrix78, names,ID = getMatrix(vector, 'visa_dataset/ANIMALS_structured_final.xml')
+
 	std = np.std(Matrix78, axis = 0)
-	print np.shape(Matrix78), std
-	for i in range(std.shape[0]):
-		if std[i]  == 0.5:
-			print vector[i]
+	#print np.shape(Matrix78), std
+	#for i in range(std.shape[0]):
+		#if std[i]  == 0.5:
+			#print vector[i]
 	dist = 0
 	mini = 80;
 	maxi = 0;
@@ -76,15 +88,14 @@ def main():
 			temp = np.linalg.norm(Matrix78[i] - Matrix78[j])
 			if temp == 0:
 				num += 1
-				print names[i], names[j]
+				#print names[i], names[j]
 			if temp < mini:
 				mini = temp
 			if temp > maxi:
 				maxi = temp
 			dist += temp
-	
 	dist /= np.shape(Matrix78)[0] * (np.shape(Matrix78)[0] - 1) / 2
-	print dist, mini, maxi, num
+	#print dist, mini, maxi, num
 
 
 
