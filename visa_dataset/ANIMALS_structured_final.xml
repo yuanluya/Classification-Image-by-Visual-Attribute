@@ -4263,7 +4263,7 @@
 	is_small
 </shape_size>
 </concept> 
- <concept name="lobster" synsetID="n01984695">
+ <concept name="lobster" synsetID="n01983048">
 <behaviour>
 	beh_-_swims
 	beh_-_eats$$$
@@ -4290,7 +4290,7 @@
 	beh_-_eats_fish$$$
 </diet>
 </concept>
-<concept name="shrimp" synsetID="n01986806">
+<concept name="shrimp" synsetID="n01987076">
 <behaviour>
 	beh_-_eats$$$
 	beh_-_swims$$$

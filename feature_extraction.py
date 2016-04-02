@@ -35,9 +35,9 @@ def getMatrix(totalFeatures, fileName):
 	tree = et.parse(fileName)
 	root = tree.getroot()
 	cc = 0
+	text_file = open("ids.txt", "w")
 	for subcategory in root:
 		for concept in subcategory:
-			text_file = open("ids.txt", "a")
 			#print concept.attrib['synsetID']
 			names.append(concept.attrib['name'])
 			ID.append(concept.attrib['synsetID'])
