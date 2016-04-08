@@ -3953,7 +3953,7 @@
 	is_gold
 </colour_patterns>
 </concept>
-<concept name="eel" synsetID="n01444339">
+<concept name="eel" synsetID="">
 <diet>
 	beh_-_eats_fish$$$
 	beh_-_eats_small_animals$$$
