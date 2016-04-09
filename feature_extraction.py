@@ -1,6 +1,7 @@
 import xml.etree.ElementTree as et
 from sets import Set
 import numpy as np
+import json
 
 def getVector(fileName):
 	vector = Set([])
@@ -42,9 +43,6 @@ def getMatrix(totalFeatures, fileName):
 			names.append(concept.attrib['name'])
 			ID.append(concept.attrib['synsetID'])
 			text_file.writelines(concept.attrib['synsetID']+'\n')
-
-
-
 			anatomy = concept.find('anatomy')
 			#print anatomy
 			featureVector = np.zeros(length)
@@ -70,15 +68,29 @@ def getMatrix(totalFeatures, fileName):
 	return np.array(matrix), names,ID
 
 def main():
-	vector = getVector('visa_dataset/ANIMALS_structured_final.xml')
-	#print vector
-	Matrix78, names,ID = getMatrix(vector, 'visa_dataset/ANIMALS_structured_final.xml')
-
-	std = np.std(Matrix78, axis = 0)
-	#print np.shape(Matrix78), std
+	vector = getVector('ANIMALS_structured_final.xml')
+	print vector
+	Matrix78, names,ID = getMatrix(vector, 'ANIMALS_structured_final.xml')
+	print len(names), len(ID)
+	std = np.sum(Matrix78, axis = 0)
+	print np.shape(Matrix78), std
+	for i in range(std.shape[0]):
+		if std[i] <= 5:
+			print vector[i], std[i],
+			for j in range(len(names)):
+				if Matrix78[j, i] == 1:
+					print names[j], 
+			print '\n',
 	#for i in range(std.shape[0]):
 		#if std[i]  == 0.5:
 			#print vector[i]
+	dictionary = {}
+	for name in range(len(names)):
+		dictionary[ID[name]] = {'name': names[name], 'features': list(Matrix78[name, :])}
+	dictionary['feature_names'] = vector
+	labels = json.dumps(dictionary)
+	f = open('labels.json', 'w')
+	f.write(labels)
 	dist = 0
 	mini = 80;
 	maxi = 0;
