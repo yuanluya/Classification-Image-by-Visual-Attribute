@@ -19,7 +19,12 @@ def main():
 	#test see output
 	testNet = caffe.Net('deploy.prototxt', 'trained.caffemodel', caffe.TEST)
 	out = testNet.forward()
-	print out
+	f = open('prediction.txt', 'w')
+	fi = open('labels.txt', 'w')
+	f.write(str(out['score']))
+	fi.write(str(out['label']))
+	f.close()
+	fi.close()
 	#print 'shape', out['score'].data.shape
 	#print 'data', out['score'].data
 	#print 'first', out['score'].data[0, :]
